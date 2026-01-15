@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>딱정한 위로</title>
+    <title data-i18n="title">딱정한 위로</title>
 
     <!-- OG -->
-    <meta property="og:title" content="딱정한 위로" />
+    <meta property="og:title" data-i18n-content="title" content="딱정한 위로" />
     <meta
       property="og:description"
+      data-i18n-content="metaDescription"
       content="괜찮다고 말해주되, 그대로는 두지 않는. 의욕 0에서도 가능한 3분 행동."
     />
     <meta
@@ -627,15 +628,15 @@
     <div class="screen active" id="landingScreen">
       <div class="wrap">
         <div class="landing">
-          <h1>딱정한 위로</h1>
-          <p class="subtitle">의욕 0에서도 가능한 3분 행동</p>
-          <p class="description">
+          <h1 data-i18n="landingTitle">딱정한 위로</h1>
+          <p class="subtitle" data-i18n="landingSubtitle">의욕 0에서도 가능한 3분 행동</p>
+          <p class="description" data-i18n-html="landingDescription">
             지금 상태를 "그대로" 인정하되, "그대로" 두진 않기<br/>
             <br/>
             가벼운 설문으로 나에게 맞는 동기부여 솔루션을 찾아보세요 ✨<br/>
             <span style="color: var(--muted2); font-size: 13px;">⏱️ 약 2-3분 소요</span>
           </p>
-          <button class="btn btn-large primary" id="btnStartSurvey">
+          <button class="btn btn-large primary" id="btnStartSurvey" data-i18n="btnStart">
             시작하기 🚀
           </button>
         </div>
@@ -657,8 +658,8 @@
             <h2 class="question-title" id="questionTitle"></h2>
             <div class="survey-options" id="surveyOptions"></div>
             <div class="survey-nav">
-              <button class="btn" id="btnPrev" style="display: none;">이전</button>
-              <button class="btn primary" id="btnNext" disabled>다음</button>
+              <button class="btn" id="btnPrev" style="display: none;" data-i18n="btnPrev">이전</button>
+              <button class="btn primary" id="btnNext" disabled data-i18n="btnNext">다음</button>
             </div>
           </div>
         </div>
@@ -701,23 +702,28 @@
             </svg>
           </div>
           <div style="min-width: 0">
-            <h1>딱정한 위로</h1>
-            <p>의욕 0에서도 가능한 3분 행동 — 다독이되, 그대로는 두지 않기</p>
+            <h1 data-i18n="mainTitle">딱정한 위로</h1>
+            <p data-i18n="mainSubtitle">의욕 0에서도 가능한 3분 행동 — 다독이되, 그대로는 두지 않기</p>
           </div>
         </div>
 
         <div class="top-actions">
-          <button class="btn ghost" id="btnRestartSurvey">설문 다시하기</button>
+          <div class="lang-switch" style="display: flex; gap: 4px;">
+            <button class="btn ghost" onclick="setLang('ko')" style="padding: 8px 10px; font-size: 12px;">한국어</button>
+            <button class="btn ghost" onclick="setLang('en')" style="padding: 8px 10px; font-size: 12px;">English</button>
+          </div>
+          <button class="btn ghost" id="btnRestartSurvey" data-i18n="btnRestartSurvey">설문 다시하기</button>
           <a
             class="btn ghost"
             href="https://funnyfunny.cloud"
             target="_blank"
             rel="noopener"
+            data-i18n="btnViewOtherServices"
           >
             다른 서비스 보기
           </a>
-          <button class="btn" id="btnExport">기록 복사</button>
-          <button class="btn primary" id="btnReset">초기화</button>
+          <button class="btn" id="btnExport" data-i18n="btnExport">기록 복사</button>
+          <button class="btn primary" id="btnReset" data-i18n="btnReset">초기화</button>
         </div>
       </header>
 
@@ -726,8 +732,8 @@
         <section class="card">
           <div class="hd">
             <div>
-              <h2>지금 상태를 “그대로” 인정하되, “그대로” 두진 않기</h2>
-              <div class="sub">공감 → 현실 한 문장 → 선택권 → 최소 행동</div>
+              <h2 data-i18n="sectionMainTitle">지금 상태를 "그대로" 인정하되, "그대로" 두진 않기</h2>
+              <div class="sub" data-i18n="sectionMainSub">공감 → 현실 한 문장 → 선택권 → 최소 행동</div>
             </div>
             <div class="row">
               <span class="pill" id="modePill">모드: 자동</span>
@@ -746,28 +752,28 @@
             </div>
 
             <div class="control">
-              <label for="energy">현재 의욕/에너지 (0~10)</label>
+              <label for="energy" data-i18n="labelEnergy">현재 의욕/에너지 (0~10)</label>
               <input id="energy" type="range" min="0" max="10" value="3" />
               <div class="range-row">
-                <span>0 (바닥)</span>
-                <span class="mono">현재: <span id="energyVal">3</span></span>
-                <span>10 (충만)</span>
+                <span data-i18n="energyMin">0 (바닥)</span>
+                <span class="mono"><span data-i18n="energyCurrent">현재</span>: <span id="energyVal">3</span></span>
+                <span data-i18n="energyMax">10 (충만)</span>
               </div>
             </div>
 
             <div class="control">
-              <label>오늘의 “막힘”은 뭐에 가까워?</label>
+              <label data-i18n="labelBlockers">오늘의 "막힘"은 뭐에 가까워?</label>
               <div class="chips" id="blockers">
-                <div class="chip" data-key="tired">피곤함/수면부족</div>
-                <div class="chip" data-key="anxious">불안/걱정</div>
-                <div class="chip" data-key="overwhelmed">할 일 과다</div>
-                <div class="chip" data-key="avoid">회피/미루기</div>
-                <div class="chip" data-key="empty">무감각/공허</div>
-                <div class="chip" data-key="pain">몸통증/컨디션</div>
+                <div class="chip" data-key="tired" data-i18n="blockerTired">피곤함/수면부족</div>
+                <div class="chip" data-key="anxious" data-i18n="blockerAnxious">불안/걱정</div>
+                <div class="chip" data-key="overwhelmed" data-i18n="blockerOverwhelmed">할 일 과다</div>
+                <div class="chip" data-key="avoid" data-i18n="blockerAvoid">회피/미루기</div>
+                <div class="chip" data-key="empty" data-i18n="blockerEmpty">무감각/공허</div>
+                <div class="chip" data-key="pain" data-i18n="blockerPain">몸통증/컨디션</div>
               </div>
               <div class="divider"></div>
-              <div class="hint">
-                팁: 이 서비스는 “기분을 좋게 만드는 것”보다,
+              <div class="hint" data-i18n-html="tipBlockers">
+                팁: 이 서비스는 "기분을 좋게 만드는 것"보다,
                 <b>지금 상태에서도 가능한 최소 움직임</b>에 집중해. 의욕이
                 생기면 하는 게 아니라,
                 <b>조금 움직여서 의욕을 따라오게</b> 만드는 방식이야.
@@ -775,50 +781,51 @@
             </div>
 
             <div class="control">
-              <label>오늘 “딱 하나” 고르기 (의욕 필요 없는 단위)</label>
+              <label data-i18n="labelActions">오늘 "딱 하나" 고르기 (의욕 필요 없는 단위)</label>
               <div class="chips" id="actions">
-                <div class="chip" data-action="water">물 한 컵 마시기</div>
-                <div class="chip" data-action="sit">침대에서 일어나 앉기</div>
-                <div class="chip" data-action="title">
-                  할 일 목록 ‘제목만’ 적기
+                <div class="chip" data-action="water" data-i18n="actionWater">물 한 컵 마시기</div>
+                <div class="chip" data-action="sit" data-i18n="actionSit">침대에서 일어나 앉기</div>
+                <div class="chip" data-action="title" data-i18n="actionTitle">
+                  할 일 목록 '제목만' 적기
                 </div>
-                <div class="chip" data-action="delete">
+                <div class="chip" data-action="delete" data-i18n="actionDelete">
                   안 해도 되는 것 1개 지우기
                 </div>
-                <div class="chip" data-action="shower">세수/샤워 ‘시작’만</div>
-                <div class="chip" data-action="desk">책상 위 3개만 정리</div>
-                <div class="chip" data-action="out">현관 밖 30초 서기</div>
-                <div class="chip" data-action="call">메시지 1개만 보내기</div>
+                <div class="chip" data-action="shower" data-i18n="actionShower">세수/샤워 '시작'만</div>
+                <div class="chip" data-action="desk" data-i18n="actionDesk">책상 위 3개만 정리</div>
+                <div class="chip" data-action="out" data-i18n="actionOut">현관 밖 30초 서기</div>
+                <div class="chip" data-action="call" data-i18n="actionCall">메시지 1개만 보내기</div>
               </div>
               <div class="divider"></div>
               <div class="row">
-                <button class="btn primary" id="btnGenerate">
+                <button class="btn primary" id="btnGenerate" data-i18n="btnGenerate">
                   멘트 만들기
                 </button>
-                <button class="btn" id="btnStart3">3분 타이머</button>
-                <button class="btn" id="btnDone">했다(체크)</button>
-                <button class="btn" id="btnSkip">오늘은 포기 선언</button>
+                <button class="btn" id="btnStart3" data-i18n="btnTimer">3분 타이머</button>
+                <button class="btn" id="btnDone" data-i18n="btnDone">했다(체크)</button>
+                <button class="btn" id="btnSkip" data-i18n="btnSkip">오늘은 포기 선언</button>
               </div>
             </div>
 
             <div class="timer" role="region" aria-label="3분 타이머">
               <div>
                 <p class="time" id="time">03:00</p>
-                <div class="muted" id="timerHint">
-                  버튼 누르면 바로 시작. 멈춰도 됨. 중요한 건 “시작” 기록.
+                <div class="muted" id="timerHint" data-i18n="timerHint">
+                  버튼 누르면 바로 시작. 멈춰도 됨. 중요한 건 "시작" 기록.
                 </div>
               </div>
               <div class="row">
-                <button class="btn" id="btnPause">일시정지</button>
-                <button class="btn" id="btnStop">종료</button>
+                <button class="btn" id="btnPause" data-i18n="btnPause">일시정지</button>
+                <button class="btn" id="btnStop" data-i18n="btnStop">종료</button>
               </div>
             </div>
 
             <div class="control">
-              <label>메모 (선택)</label>
+              <label data-i18n="labelMemo">메모 (선택)</label>
               <input
                 id="memo"
                 type="text"
+                data-i18n-placeholder="memoPlaceholder"
                 placeholder="예: 3분만 했는데도 좀 덜 무거움 / 그냥 시작이 어려웠음"
                 style="
                   width: 100%;
@@ -830,8 +837,8 @@
                 "
               />
               <div class="range-row">
-                <span>기록은 평가가 아니라 “증거”야</span>
-                <span class="mono"><span class="kbd">Enter</span>로 저장</span>
+                <span data-i18n="memoHint1">기록은 평가가 아니라 "증거"야</span>
+                <span class="mono"><span class="kbd">Enter</span> <span data-i18n="memoHint2">로 저장</span></span>
               </div>
             </div>
           </div>
@@ -841,38 +848,38 @@
         <aside class="card">
           <div class="hd">
             <div>
-              <h2>오늘 기록</h2>
-              <div class="sub">
-                잘했는지 못했는지 판단 금지. “했다/시작했다”만 남기기.
+              <h2 data-i18n="sectionLogTitle">오늘 기록</h2>
+              <div class="sub" data-i18n="sectionLogSub">
+                잘했는지 못했는지 판단 금지. "했다/시작했다"만 남기기.
               </div>
             </div>
             <span class="pill" id="streakPill">연속: 0일</span>
           </div>
           <div class="bd stack">
             <div class="control">
-              <label>냉정한 원칙 (서비스 뼈대)</label>
-              <div class="hint" id="principles">
+              <label data-i18n="labelPrinciples">냉정한 원칙 (서비스 뼈대)</label>
+              <div class="hint" id="principles" data-i18n-html="labelPrinciples">
                 1) 의욕은 전제 조건이 아님<br />
                 2) 감정은 사실로 존중, 행동은 선택으로 결정<br />
-                3) “큰 결심” 금지, “작은 시작”만 허용<br />
+                3) "큰 결심" 금지, "작은 시작"만 허용<br />
                 4) 쉬는 건 회복, 멈춤은 정체 — 구분하기
               </div>
             </div>
 
             <div class="control">
-              <label>로그</label>
+              <label data-i18n="labelLog">로그</label>
               <div class="log" id="log"></div>
               <div class="divider"></div>
               <div class="row">
-                <button class="btn" id="btnClearLog">오늘 기록 지우기</button>
-                <button class="btn" id="btnNudge">다음 한 문장</button>
+                <button class="btn" id="btnClearLog" data-i18n="btnClearLog">오늘 기록 지우기</button>
+                <button class="btn" id="btnNudge" data-i18n="btnNudge">다음 한 문장</button>
               </div>
             </div>
 
             <div class="control">
-              <label>안전 가이드</label>
-              <div class="hint">
-                이 서비스는 “생활/생산성 코칭” 성격이야. 만약 무기력이 오래
+              <label data-i18n="labelSafety">안전 가이드</label>
+              <div class="hint" data-i18n-html="safetyText">
+                이 서비스는 "생활/생산성 코칭" 성격이야. 만약 무기력이 오래
                 지속되거나(예: 수주 이상), 수면/식사/일상 기능이 크게 무너진
                 상태라면, 전문가 도움(상담/진료)을 병행하는 게 더 빠를 수 있어.
                 <br /><br />
@@ -883,7 +890,7 @@
         </aside>
       </div>
 
-      <footer>
+      <footer data-i18n-html="footerText">
         ⓘ 저장은 이 브라우저(로컬) 안에서만 이루어집니다. (localStorage) ·
         단축키: <span class="kbd">G</span> 멘트 ·
         <span class="kbd">T</span> 타이머 · <span class="kbd">D</span> 했다 ·
@@ -895,6 +902,400 @@
 
     <script>
       // =========================
+      // i18n
+      // =========================
+      const translations = {
+        ko: {
+          // Meta
+          title: "딱정한 위로",
+          metaDescription: "괜찮다고 말해주되, 그대로는 두지 않는. 의욕 0에서도 가능한 3분 행동.",
+          // Landing
+          landingTitle: "딱정한 위로",
+          landingSubtitle: "의욕 0에서도 가능한 3분 행동",
+          landingDescription: "지금 상태를 \"그대로\" 인정하되, \"그대로\" 두진 않기<br/><br/>가벼운 설문으로 나에게 맞는 동기부여 솔루션을 찾아보세요 ✨<br/><span style=\"color: var(--muted2); font-size: 13px;\">⏱️ 약 2-3분 소요</span>",
+          btnStart: "시작하기 🚀",
+          // Survey
+          questionPrefix: "질문",
+          btnPrev: "이전",
+          btnNext: "다음",
+          // Result
+          resultViewAll: "📋 전체 기능 보기",
+          resultComplete: "설문 완료! 잘했어! 🎉",
+          // Main
+          mainTitle: "딱정한 위로",
+          mainSubtitle: "의욕 0에서도 가능한 3분 행동 — 다독이되, 그대로는 두지 않기",
+          btnRestartSurvey: "설문 다시하기",
+          btnViewOtherServices: "다른 서비스 보기",
+          btnExport: "기록 복사",
+          btnReset: "초기화",
+          sectionMainTitle: "지금 상태를 \"그대로\" 인정하되, \"그대로\" 두진 않기",
+          sectionMainSub: "공감 → 현실 한 문장 → 선택권 → 최소 행동",
+          modeLabel: "모드",
+          modeAuto: "자동",
+          todayLabel: "오늘",
+          labelEnergy: "현재 의욕/에너지 (0~10)",
+          energyMin: "0 (바닥)",
+          energyMax: "10 (충만)",
+          energyCurrent: "현재",
+          labelBlockers: "오늘의 \"막힘\"은 뭐에 가까워?",
+          blockerTired: "피곤함/수면부족",
+          blockerAnxious: "불안/걱정",
+          blockerOverwhelmed: "할 일 과다",
+          blockerAvoid: "회피/미루기",
+          blockerEmpty: "무감각/공허",
+          blockerPain: "몸통증/컨디션",
+          tipBlockers: "팁: 이 서비스는 \"기분을 좋게 만드는 것\"보다, <b>지금 상태에서도 가능한 최소 움직임</b>에 집중해. 의욕이 생기면 하는 게 아니라, <b>조금 움직여서 의욕을 따라오게</b> 만드는 방식이야.",
+          labelActions: "오늘 \"딱 하나\" 고르기 (의욕 필요 없는 단위)",
+          actionWater: "물 한 컵 마시기",
+          actionSit: "침대에서 일어나 앉기",
+          actionTitle: "할 일 목록 '제목만' 적기",
+          actionDelete: "안 해도 되는 것 1개 지우기",
+          actionShower: "세수/샤워 '시작'만",
+          actionDesk: "책상 위 3개만 정리",
+          actionOut: "현관 밖 30초 서기",
+          actionCall: "메시지 1개만 보내기",
+          btnGenerate: "멘트 만들기",
+          btnTimer: "3분 타이머",
+          btnDone: "했다(체크)",
+          btnSkip: "오늘은 포기 선언",
+          timerHint: "버튼 누르면 바로 시작. 멈춰도 됨. 중요한 건 \"시작\" 기록.",
+          btnPause: "일시정지",
+          btnResume: "재개",
+          btnStop: "종료",
+          labelMemo: "메모 (선택)",
+          memoPlaceholder: "예: 3분만 했는데도 좀 덜 무거움 / 그냥 시작이 어려웠음",
+          memoHint1: "기록은 평가가 아니라 \"증거\"야",
+          memoHint2: "Enter로 저장",
+          sectionLogTitle: "오늘 기록",
+          sectionLogSub: "잘했는지 못했는지 판단 금지. \"했다/시작했다\"만 남기기.",
+          streakLabel: "연속",
+          streakDays: "일",
+          labelPrinciples: "냉정한 원칙 (서비스 뼈대)",
+          principle1: "1) 의욕은 전제 조건이 아님",
+          principle2: "2) 감정은 사실로 존중, 행동은 선택으로 결정",
+          principle3: "3) \"큰 결심\" 금지, \"작은 시작\"만 허용",
+          principle4: "4) 쉬는 건 회복, 멈춤은 정체 — 구분하기",
+          labelLog: "로그",
+          btnClearLog: "오늘 기록 지우기",
+          btnNudge: "다음 한 문장",
+          labelSafety: "안전 가이드",
+          safetyText: "이 서비스는 \"생활/생산성 코칭\" 성격이야. 만약 무기력이 오래 지속되거나(예: 수주 이상), 수면/식사/일상 기능이 크게 무너진 상태라면, 전문가 도움(상담/진료)을 병행하는 게 더 빠를 수 있어.<br/><br/>단, 오늘은 결론 하나: <b>0에서 1만 만들자.</b>",
+          footerText: "ⓘ 저장은 이 브라우저(로컬) 안에서만 이루어집니다. (localStorage) · 단축키: <span class=\"kbd\">G</span> 멘트 · <span class=\"kbd\">T</span> 타이머 · <span class=\"kbd\">D</span> 했다 · <span class=\"kbd\">N</span> 다음 한 문장",
+          // Toasts
+          toastCopied: "기록을 복사했어",
+          toastMemoSaved: "메모 저장",
+          toastMentionGenerated: "멘트 생성",
+          toastTimerStart: "3분 시작",
+          toastTimerEnd: "3분 끝. 여기서 멈춰도 돼.",
+          toastTimerStop: "타이머 종료",
+          toastDone: "좋아. 오늘은 여기까지로 충분해.",
+          toastSkip: "포기 선언 기록",
+          toastLogCleared: "오늘 기록 삭제",
+          toastReset: "초기화 완료",
+          toastNudge: "다음 한 문장",
+          toastSelectAction: "먼저 '딱 하나'를 고르자",
+          toastSelectActionForTimer: "먼저 행동을 선택해주세요",
+          toastStartTimer: "먼저 타이머를 시작해",
+          toastConfirmRestart: "설문을 다시 시작할까요? 현재 진행 상황은 저장됩니다.",
+          // Survey questions
+          surveyQ1: "지금 기분이 어때?",
+          surveyQ2: "지금 에너지 레벨은?",
+          surveyQ3: "지금 가장 막히는 건 뭐야?",
+          surveyQ4: "지금 할 수 있는 가장 작은 행동은?",
+          surveyQ5: "오늘 목표는?",
+          // Survey options
+          surveyOpt1_1: "완전히 무기력해 😴",
+          surveyOpt1_2: "피곤하고 지쳐 💤",
+          surveyOpt1_3: "불안하고 걱정돼 😰",
+          surveyOpt1_4: "할 일이 너무 많아 📋",
+          surveyOpt1_5: "그냥 미루고 싶어 🫠",
+          surveyOpt1_6: "괜찮아, 그냥 시작이 어려워 🤷",
+          surveyOpt2_1: "0 - 완전히 바닥 🔋",
+          surveyOpt2_2: "1-2 - 거의 없음 🔋",
+          surveyOpt2_3: "3-4 - 조금 있음 🔋",
+          surveyOpt2_4: "5-6 - 보통 🔋",
+          surveyOpt2_5: "7-8 - 괜찮음 🔋",
+          surveyOpt2_6: "9-10 - 충만함 🔋",
+          surveyOpt3_1: "시작 자체가 어려워 🚪",
+          surveyOpt3_2: "할 일이 너무 많아서 압도돼 📚",
+          surveyOpt3_3: "완벽하게 해야 한다는 압박 ⚡",
+          surveyOpt3_4: "의욕이 전혀 없어 💭",
+          surveyOpt3_5: "뭘 해야 할지 모르겠어 ❓",
+          surveyOpt3_6: "그냥 피하고 싶어 🏃",
+          surveyOpt4_1: "💧 물 한 컵 마시기",
+          surveyOpt4_2: "🪑 침대에서 일어나 앉기",
+          surveyOpt4_3: "📝 할 일 목록 제목만 적기",
+          surveyOpt4_4: "🗑️ 안 해도 되는 것 1개 지우기",
+          surveyOpt4_5: "🚿 세수/샤워 시작만",
+          surveyOpt4_6: "📦 책상 위 3개만 정리",
+          surveyOpt4_7: "🌬️ 현관 밖 30초 서기",
+          surveyOpt4_8: "💬 메시지 1개만 보내기",
+          surveyOpt5_1: "그냥 시작만 하면 돼 ✨",
+          surveyOpt5_2: "3분만 하면 돼 ⏱️",
+          surveyOpt5_3: "하나만 완료하면 돼 ✅",
+          surveyOpt5_4: "기록만 남기면 돼 📝",
+          // Result types
+          resultEmptyTitle: "새싹 타입",
+          resultEmptyDesc: "완전히 무기력한 지금도 괜찮아. 이상한 게 아니야! 🌱 하지만 작은 움직임 하나로 시작할 수 있어. 지금 바로 해볼까?",
+          resultTiredTitle: "회복 타입",
+          resultTiredDesc: "피곤하고 지친 지금도 이해해. 하지만 가장 가벼운 움직임부터 시작해보자. 무리하지 말고, 딱 하나만! 💪",
+          resultAnxiousTitle: "안정 타입",
+          resultAnxiousDesc: "불안하고 걱정되는 마음, 인정해. 하지만 작은 행동 하나가 그 감정을 조금씩 풀어줄 거야. 함께 해볼까? 🤝",
+          resultOverwhelmedTitle: "정리 타입",
+          resultOverwhelmedDesc: "할 일이 많아서 압도되는 느낌이지? 그럴수록 작게 나누고, 하나씩만 시작하자. 완벽하지 않아도 돼! ✨",
+          resultAvoidTitle: "시작 타입",
+          resultAvoidDesc: "미루고 싶은 마음도 이해해. 하지만 딱 3분만 하면 돼. 그 이상은 욕심이야. 지금 바로 시작해볼까? 🚀",
+          resultOkTitle: "준비 타입",
+          resultOkDesc: "괜찮은 상태에서 시작이 어려운 거라면, 이제 바로 시작할 수 있어! 지금이 바로 시작할 때야! 💫",
+          // Log types
+          logGenerate: "멘트",
+          logTimerStart: "타이머 시작",
+          logTimerDone: "타이머 완료",
+          logDone: "했다(체크)",
+          logSkip: "포기 선언",
+          logMemo: "메모 저장",
+          logAction: "행동",
+          logBlockers: "막힘",
+          logMemoLabel: "메모",
+          logEmpty: "아직 기록이 없어. 괜찮아.<br/>버튼 하나만 눌러도 '시작'이야.",
+          // Export
+          exportHeader: "[딱정한 위로]",
+          exportEnergy: "에너지",
+          exportBlockers: "막힘",
+          exportAction: "오늘의 하나",
+          exportMemo: "메모",
+          exportLog: "로그",
+          exportNotSelected: "미선택",
+          // Mode labels
+          modeSoft: "부드럽게",
+          modeBalanced: "균형",
+          modeCold: "냉정",
+        },
+        en: {
+          // Meta
+          title: "Strict Comfort",
+          metaDescription: "Acknowledge as is, but don't leave it as is. 3-minute actions possible even at motivation 0.",
+          // Landing
+          landingTitle: "Strict Comfort",
+          landingSubtitle: "3-minute actions possible even at motivation 0",
+          landingDescription: "Acknowledge your current state \"as is\", but don't leave it \"as is\"<br/><br/>Find your motivation solution through a quick survey ✨<br/><span style=\"color: var(--muted2); font-size: 13px;\">⏱️ Takes about 2-3 minutes</span>",
+          btnStart: "Get Started 🚀",
+          // Survey
+          questionPrefix: "Question",
+          btnPrev: "Previous",
+          btnNext: "Next",
+          // Result
+          resultViewAll: "📋 View All Features",
+          resultComplete: "Survey complete! Well done! 🎉",
+          // Main
+          mainTitle: "Strict Comfort",
+          mainSubtitle: "3-minute actions possible even at motivation 0 — comfort but don't leave as is",
+          btnRestartSurvey: "Restart Survey",
+          btnViewOtherServices: "Other Services",
+          btnExport: "Copy Log",
+          btnReset: "Reset",
+          sectionMainTitle: "Acknowledge your current state \"as is\", but don't leave it \"as is\"",
+          sectionMainSub: "Empathy → One reality sentence → Choice → Minimum action",
+          modeLabel: "Mode",
+          modeAuto: "Auto",
+          todayLabel: "Today",
+          labelEnergy: "Current motivation/energy (0~10)",
+          energyMin: "0 (Bottom)",
+          energyMax: "10 (Full)",
+          energyCurrent: "Current",
+          labelBlockers: "What's blocking you today?",
+          blockerTired: "Tiredness/Lack of sleep",
+          blockerAnxious: "Anxiety/Worry",
+          blockerOverwhelmed: "Too many tasks",
+          blockerAvoid: "Avoidance/Procrastination",
+          blockerEmpty: "Numbness/Emptiness",
+          blockerPain: "Body pain/Condition",
+          tipBlockers: "Tip: This service focuses on <b>minimum movement possible even in your current state</b> rather than \"making you feel good\". It's not about doing when you feel motivated, but <b>moving a little to make motivation follow</b>.",
+          labelActions: "Choose \"just one\" for today (no motivation required)",
+          actionWater: "Drink one glass of water",
+          actionSit: "Get up from bed and sit",
+          actionTitle: "Write only titles for to-do list",
+          actionDelete: "Delete 1 thing you don't need to do",
+          actionShower: "Just start washing face/shower",
+          actionDesk: "Organize only 3 things on desk",
+          actionOut: "Stand outside door for 30 seconds",
+          actionCall: "Send just 1 message",
+          btnGenerate: "Generate Message",
+          btnTimer: "3-minute Timer",
+          btnDone: "Done (Check)",
+          btnSkip: "Give up for today",
+          timerHint: "Click button to start. You can pause. What matters is the \"start\" record.",
+          btnPause: "Pause",
+          btnResume: "Resume",
+          btnStop: "Stop",
+          labelMemo: "Memo (Optional)",
+          memoPlaceholder: "e.g., Felt less heavy even after just 3 minutes / Just hard to start",
+          memoHint1: "Records are evidence, not evaluation",
+          memoHint2: "Press Enter to save",
+          sectionLogTitle: "Today's Log",
+          sectionLogSub: "No judging good or bad. Just record \"did it/started it\".",
+          streakLabel: "Streak",
+          streakDays: "days",
+          labelPrinciples: "Cold Principles (Service Core)",
+          principle1: "1) Motivation is not a prerequisite",
+          principle2: "2) Emotions are respected as facts, actions are decided as choices",
+          principle3: "3) No \"big decisions\", only \"small starts\" allowed",
+          principle4: "4) Rest is recovery, stopping is stagnation — distinguish",
+          labelLog: "Log",
+          btnClearLog: "Clear Today's Log",
+          btnNudge: "Next One Sentence",
+          labelSafety: "Safety Guide",
+          safetyText: "This service is \"lifestyle/productivity coaching\" in nature. If lethargy persists for a long time (e.g., weeks) or sleep/meals/daily functions are significantly disrupted, it may be faster to seek professional help (counseling/medical care) in parallel.<br/><br/>But today, one conclusion: <b>Just make 0 to 1.</b>",
+          footerText: "ⓘ Storage is only within this browser (local). (localStorage) · Shortcuts: <span class=\"kbd\">G</span> Message · <span class=\"kbd\">T</span> Timer · <span class=\"kbd\">D</span> Done · <span class=\"kbd\">N</span> Next One Sentence",
+          // Toasts
+          toastCopied: "Log copied",
+          toastMemoSaved: "Memo saved",
+          toastMentionGenerated: "Message generated",
+          toastTimerStart: "3 minutes started",
+          toastTimerEnd: "3 minutes done. You can stop here.",
+          toastTimerStop: "Timer stopped",
+          toastDone: "Good. That's enough for today.",
+          toastSkip: "Give up recorded",
+          toastLogCleared: "Today's log cleared",
+          toastReset: "Reset complete",
+          toastNudge: "Next one sentence",
+          toastSelectAction: "First, choose 'just one'",
+          toastSelectActionForTimer: "Please select an action first",
+          toastStartTimer: "Start the timer first",
+          toastConfirmRestart: "Restart the survey? Current progress will be saved.",
+          // Survey questions
+          surveyQ1: "How are you feeling now?",
+          surveyQ2: "What's your energy level now?",
+          surveyQ3: "What's blocking you most right now?",
+          surveyQ4: "What's the smallest action you can do now?",
+          surveyQ5: "What's your goal for today?",
+          // Survey options
+          surveyOpt1_1: "Completely lethargic 😴",
+          surveyOpt1_2: "Tired and exhausted 💤",
+          surveyOpt1_3: "Anxious and worried 😰",
+          surveyOpt1_4: "Too many things to do 📋",
+          surveyOpt1_5: "Just want to procrastinate 🫠",
+          surveyOpt1_6: "I'm okay, just hard to start 🤷",
+          surveyOpt2_1: "0 - Completely bottom 🔋",
+          surveyOpt2_2: "1-2 - Almost none 🔋",
+          surveyOpt2_3: "3-4 - A little 🔋",
+          surveyOpt2_4: "5-6 - Average 🔋",
+          surveyOpt2_5: "7-8 - Okay 🔋",
+          surveyOpt2_6: "9-10 - Full 🔋",
+          surveyOpt3_1: "Starting itself is hard 🚪",
+          surveyOpt3_2: "Overwhelmed by too many tasks 📚",
+          surveyOpt3_3: "Pressure to do it perfectly ⚡",
+          surveyOpt3_4: "No motivation at all 💭",
+          surveyOpt3_5: "Don't know what to do ❓",
+          surveyOpt3_6: "Just want to avoid 🏃",
+          surveyOpt4_1: "💧 Drink one glass of water",
+          surveyOpt4_2: "🪑 Get up from bed and sit",
+          surveyOpt4_3: "📝 Write only titles for to-do list",
+          surveyOpt4_4: "🗑️ Delete 1 thing you don't need to do",
+          surveyOpt4_5: "🚿 Just start washing face/shower",
+          surveyOpt4_6: "📦 Organize only 3 things on desk",
+          surveyOpt4_7: "🌬️ Stand outside door for 30 seconds",
+          surveyOpt4_8: "💬 Send just 1 message",
+          surveyOpt5_1: "Just start ✨",
+          surveyOpt5_2: "Just 3 minutes ⏱️",
+          surveyOpt5_3: "Complete just one ✅",
+          surveyOpt5_4: "Just leave a record 📝",
+          // Result types
+          resultEmptyTitle: "Sprout Type",
+          resultEmptyDesc: "It's okay to be completely lethargic right now. It's not strange! 🌱 But you can start with one small movement. Want to try now?",
+          resultTiredTitle: "Recovery Type",
+          resultTiredDesc: "I understand you're tired and exhausted now. But let's start with the lightest movement. Don't push yourself, just one! 💪",
+          resultAnxiousTitle: "Stability Type",
+          resultAnxiousDesc: "I acknowledge your anxious and worried feelings. But one small action will gradually ease those feelings. Shall we try together? 🤝",
+          resultOverwhelmedTitle: "Organize Type",
+          resultOverwhelmedDesc: "Feeling overwhelmed by too many tasks? The more so, let's break it down small and start one at a time. It doesn't have to be perfect! ✨",
+          resultAvoidTitle: "Start Type",
+          resultAvoidDesc: "I understand wanting to procrastinate. But just 3 minutes is enough. Anything more is greed. Want to start right now? 🚀",
+          resultOkTitle: "Ready Type",
+          resultOkDesc: "If you're okay but just hard to start, you can start right now! Now is the time to start! 💫",
+          // Log types
+          logGenerate: "Message",
+          logTimerStart: "Timer start",
+          logTimerDone: "Timer done",
+          logDone: "Done (Check)",
+          logSkip: "Give up",
+          logMemo: "Memo saved",
+          logAction: "Action",
+          logBlockers: "Blockers",
+          logMemoLabel: "Memo",
+          logEmpty: "No records yet. It's okay.<br/>Just pressing one button is a 'start'.",
+          // Export
+          exportHeader: "[Strict Comfort]",
+          exportEnergy: "Energy",
+          exportBlockers: "Blockers",
+          exportAction: "Today's One",
+          exportMemo: "Memo",
+          exportLog: "Log",
+          exportNotSelected: "Not selected",
+          // Mode labels
+          modeSoft: "Gentle",
+          modeBalanced: "Balanced",
+          modeCold: "Cold",
+        }
+      };
+
+      let currentLang = "ko";
+      const defaultLang = "ko";
+
+      function detectLang() {
+        if (typeof window === "undefined") return defaultLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (stored && (stored === "ko" || stored === "en")) return stored;
+        const browserLang = navigator.language || navigator.userLanguage || "";
+        if (browserLang.toLowerCase().startsWith("ko")) return "ko";
+        return "en";
+      }
+
+      function t(key, vars = {}) {
+        const text = translations[currentLang]?.[key] || translations[defaultLang]?.[key] || key;
+        if (typeof text !== "string") return text;
+        return text.replace(/\{(\w+)\}/g, (_, k) => (vars[k] !== undefined ? vars[k] : `{${k}}`));
+      }
+
+      function applyTranslations() {
+        document.documentElement.lang = currentLang;
+        document.title = t("title");
+        const metaDesc = document.querySelector('meta[property="og:description"]');
+        if (metaDesc) metaDesc.setAttribute("content", t("metaDescription"));
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          el.setAttribute("placeholder", t(el.dataset.i18nPlaceholder));
+        });
+      }
+
+      function setLang(lang, options = {}) {
+        if (lang !== "ko" && lang !== "en") return;
+        currentLang = lang;
+        localStorage.setItem("preferredLang", lang);
+        applyTranslations();
+        // Re-render dynamic content
+        if (state.currentScreen === "main") {
+          restoreSelections();
+          const lines = buildLines();
+          applyLines(lines);
+          renderLog();
+          renderStreak();
+          renderToday();
+        } else if (state.currentScreen === "survey") {
+          renderQuestion();
+        } else if (state.currentScreen === "result") {
+          showResult();
+        } else if (state.currentScreen === "landing") {
+          // Landing screen updates handled by applyTranslations
+        }
+      }
+
+      // =========================
       // State & helpers
       // =========================
       const $ = (s) => document.querySelector(s);
@@ -904,121 +1305,125 @@
       const todayKey = () => new Date().toISOString().slice(0, 10);
 
       // 설문 질문들
-      const SURVEY_QUESTIONS = [
-        {
-          question: "지금 기분이 어때?",
-          options: [
-            { text: "완전히 무기력해 😴", value: "empty", energy: 1 },
-            { text: "피곤하고 지쳐 💤", value: "tired", energy: 2 },
-            { text: "불안하고 걱정돼 😰", value: "anxious", energy: 3 },
-            { text: "할 일이 너무 많아 📋", value: "overwhelmed", energy: 4 },
-            { text: "그냥 미루고 싶어 🫠", value: "avoid", energy: 3 },
-            { text: "괜찮아, 그냥 시작이 어려워 🤷", value: "ok", energy: 5 },
-          ]
-        },
-        {
-          question: "지금 에너지 레벨은?",
-          options: [
-            { text: "0 - 완전히 바닥 🔋", value: 0 },
-            { text: "1-2 - 거의 없음 🔋", value: 1 },
-            { text: "3-4 - 조금 있음 🔋", value: 3 },
-            { text: "5-6 - 보통 🔋", value: 5 },
-            { text: "7-8 - 괜찮음 🔋", value: 7 },
-            { text: "9-10 - 충만함 🔋", value: 9 },
-          ]
-        },
-        {
-          question: "지금 가장 막히는 건 뭐야?",
-          options: [
-            { text: "시작 자체가 어려워 🚪", value: "start" },
-            { text: "할 일이 너무 많아서 압도돼 📚", value: "overwhelmed" },
-            { text: "완벽하게 해야 한다는 압박 ⚡", value: "perfection" },
-            { text: "의욕이 전혀 없어 💭", value: "motivation" },
-            { text: "뭘 해야 할지 모르겠어 ❓", value: "direction" },
-            { text: "그냥 피하고 싶어 🏃", value: "avoid" },
-          ]
-        },
-        {
-          question: "지금 할 수 있는 가장 작은 행동은?",
-          options: [
-            { text: "💧 물 한 컵 마시기", value: "water" },
-            { text: "🪑 침대에서 일어나 앉기", value: "sit" },
-            { text: "📝 할 일 목록 제목만 적기", value: "title" },
-            { text: "🗑️ 안 해도 되는 것 1개 지우기", value: "delete" },
-            { text: "🚿 세수/샤워 시작만", value: "shower" },
-            { text: "📦 책상 위 3개만 정리", value: "desk" },
-            { text: "🌬️ 현관 밖 30초 서기", value: "out" },
-            { text: "💬 메시지 1개만 보내기", value: "call" },
-          ]
-        },
-        {
-          question: "오늘 목표는?",
-          options: [
-            { text: "그냥 시작만 하면 돼 ✨", value: "start" },
-            { text: "3분만 하면 돼 ⏱️", value: "3min" },
-            { text: "하나만 완료하면 돼 ✅", value: "one" },
-            { text: "기록만 남기면 돼 📝", value: "record" },
-          ]
-        }
-      ];
+      function getSurveyQuestions() {
+        return [
+          {
+            question: t("surveyQ1"),
+            options: [
+              { text: t("surveyOpt1_1"), value: "empty", energy: 1 },
+              { text: t("surveyOpt1_2"), value: "tired", energy: 2 },
+              { text: t("surveyOpt1_3"), value: "anxious", energy: 3 },
+              { text: t("surveyOpt1_4"), value: "overwhelmed", energy: 4 },
+              { text: t("surveyOpt1_5"), value: "avoid", energy: 3 },
+              { text: t("surveyOpt1_6"), value: "ok", energy: 5 },
+            ]
+          },
+          {
+            question: t("surveyQ2"),
+            options: [
+              { text: t("surveyOpt2_1"), value: 0 },
+              { text: t("surveyOpt2_2"), value: 1 },
+              { text: t("surveyOpt2_3"), value: 3 },
+              { text: t("surveyOpt2_4"), value: 5 },
+              { text: t("surveyOpt2_5"), value: 7 },
+              { text: t("surveyOpt2_6"), value: 9 },
+            ]
+          },
+          {
+            question: t("surveyQ3"),
+            options: [
+              { text: t("surveyOpt3_1"), value: "start" },
+              { text: t("surveyOpt3_2"), value: "overwhelmed" },
+              { text: t("surveyOpt3_3"), value: "perfection" },
+              { text: t("surveyOpt3_4"), value: "motivation" },
+              { text: t("surveyOpt3_5"), value: "direction" },
+              { text: t("surveyOpt3_6"), value: "avoid" },
+            ]
+          },
+          {
+            question: t("surveyQ4"),
+            options: [
+              { text: t("surveyOpt4_1"), value: "water" },
+              { text: t("surveyOpt4_2"), value: "sit" },
+              { text: t("surveyOpt4_3"), value: "title" },
+              { text: t("surveyOpt4_4"), value: "delete" },
+              { text: t("surveyOpt4_5"), value: "shower" },
+              { text: t("surveyOpt4_6"), value: "desk" },
+              { text: t("surveyOpt4_7"), value: "out" },
+              { text: t("surveyOpt4_8"), value: "call" },
+            ]
+          },
+          {
+            question: t("surveyQ5"),
+            options: [
+              { text: t("surveyOpt5_1"), value: "start" },
+              { text: t("surveyOpt5_2"), value: "3min" },
+              { text: t("surveyOpt5_3"), value: "one" },
+              { text: t("surveyOpt5_4"), value: "record" },
+            ]
+          }
+        ];
+      }
 
       // 결과 타입별 메시지
-      const RESULT_TYPES = {
-        empty: {
-          emoji: "🌱",
-          title: "새싹 타입",
-          description: "완전히 무기력한 지금도 괜찮아. 이상한 게 아니야! 🌱 하지만 작은 움직임 하나로 시작할 수 있어. 지금 바로 해볼까?",
-          actions: [
-            { text: "💧 물 한 컵 마시기", action: "water", message: "좋아! 가장 작은 움직임부터 시작했어. 이제 조금 더 가볍지 않아?" },
-            { text: "🪑 침대에서 일어나 앉기", action: "sit", message: "완벽해! 일어나 앉는 것만으로도 충분한 시작이야. 잘하고 있어!" },
-          ]
-        },
-        tired: {
-          emoji: "💤",
-          title: "회복 타입",
-          description: "피곤하고 지친 지금도 이해해. 하지만 가장 가벼운 움직임부터 시작해보자. 무리하지 말고, 딱 하나만! 💪",
-          actions: [
-            { text: "🌬️ 현관 밖 30초 서기", action: "out", message: "바깥 공기만 마셔도 몸이 깨어날 수 있어. 잘했어!" },
-            { text: "🚿 세수 시작만", action: "shower", message: "물에 손만 대도 기분이 전환될 수 있어. 시작이 중요해!" },
-          ]
-        },
-        anxious: {
-          emoji: "🫂",
-          title: "안정 타입",
-          description: "불안하고 걱정되는 마음, 인정해. 하지만 작은 행동 하나가 그 감정을 조금씩 풀어줄 거야. 함께 해볼까? 🤝",
-          actions: [
-            { text: "📝 할 일 목록 제목만 적기", action: "title", message: "머릿속 걱정을 종이에 옮기면 조금 가벼워져. 잘하고 있어!" },
-            { text: "🗑️ 안 해도 되는 것 1개 지우기", action: "delete", message: "부담을 줄이는 것도 중요한 행동이야. 멋져!" },
-          ]
-        },
-        overwhelmed: {
-          emoji: "📋",
-          title: "정리 타입",
-          description: "할 일이 많아서 압도되는 느낌이지? 그럴수록 작게 나누고, 하나씩만 시작하자. 완벽하지 않아도 돼! ✨",
-          actions: [
-            { text: "🗑️ 안 해도 되는 것 1개 지우기", action: "delete", message: "할 일을 줄이는 것도 중요한 행동이야. 잘했어!" },
-            { text: "📦 책상 위 3개만 정리", action: "desk", message: "작은 공간부터 정리하면 마음도 정리돼. 멋져!" },
-          ]
-        },
-        avoid: {
-          emoji: "🎯",
-          title: "시작 타입",
-          description: "미루고 싶은 마음도 이해해. 하지만 딱 3분만 하면 돼. 그 이상은 욕심이야. 지금 바로 시작해볼까? 🚀",
-          actions: [
-            { text: "💬 메시지 1개만 보내기", action: "call", message: "가장 작은 소통부터 시작했어. 잘하고 있어!" },
-            { text: "📝 할 일 목록 제목만 적기", action: "title", message: "완벽하게 적을 필요 없어. 제목만 적으면 돼. 멋져!" },
-          ]
-        },
-        ok: {
-          emoji: "✨",
-          title: "준비 타입",
-          description: "괜찮은 상태에서 시작이 어려운 거라면, 이제 바로 시작할 수 있어! 지금이 바로 시작할 때야! 💫",
-          actions: [
-            { text: "⏱️ 3분 타이머 시작", action: "timer", message: "지금 바로 3분만 해보자. 끝나면 그만해도 돼. 시작이 중요해!" },
-            { text: "🎯 가장 작은 행동부터", action: "any", message: "어떤 작은 행동이든 좋아. 시작만 하면 돼. 잘하고 있어!" },
-          ]
-        }
-      };
+      function getResultTypes() {
+        return {
+          empty: {
+            emoji: "🌱",
+            title: t("resultEmptyTitle"),
+            description: t("resultEmptyDesc"),
+            actions: [
+              { text: t("surveyOpt4_1"), action: "water", message: currentLang === "ko" ? "좋아! 가장 작은 움직임부터 시작했어. 이제 조금 더 가볍지 않아?" : "Good! You started with the smallest movement. Don't you feel a bit lighter now?" },
+              { text: t("surveyOpt4_2"), action: "sit", message: currentLang === "ko" ? "완벽해! 일어나 앉는 것만으로도 충분한 시작이야. 잘하고 있어!" : "Perfect! Just getting up and sitting is enough of a start. You're doing great!" },
+            ]
+          },
+          tired: {
+            emoji: "💤",
+            title: t("resultTiredTitle"),
+            description: t("resultTiredDesc"),
+            actions: [
+              { text: t("surveyOpt4_7"), action: "out", message: currentLang === "ko" ? "바깥 공기만 마셔도 몸이 깨어날 수 있어. 잘했어!" : "Just breathing outside air can wake up your body. Well done!" },
+              { text: t("surveyOpt4_5"), action: "shower", message: currentLang === "ko" ? "물에 손만 대도 기분이 전환될 수 있어. 시작이 중요해!" : "Just touching water can shift your mood. Starting is what matters!" },
+            ]
+          },
+          anxious: {
+            emoji: "🫂",
+            title: t("resultAnxiousTitle"),
+            description: t("resultAnxiousDesc"),
+            actions: [
+              { text: t("surveyOpt4_3"), action: "title", message: currentLang === "ko" ? "머릿속 걱정을 종이에 옮기면 조금 가벼워져. 잘하고 있어!" : "Moving worries from your head to paper can lighten them. You're doing great!" },
+              { text: t("surveyOpt4_4"), action: "delete", message: currentLang === "ko" ? "부담을 줄이는 것도 중요한 행동이야. 멋져!" : "Reducing burden is also an important action. Awesome!" },
+            ]
+          },
+          overwhelmed: {
+            emoji: "📋",
+            title: t("resultOverwhelmedTitle"),
+            description: t("resultOverwhelmedDesc"),
+            actions: [
+              { text: t("surveyOpt4_4"), action: "delete", message: currentLang === "ko" ? "할 일을 줄이는 것도 중요한 행동이야. 잘했어!" : "Reducing tasks is also an important action. Well done!" },
+              { text: t("surveyOpt4_6"), action: "desk", message: currentLang === "ko" ? "작은 공간부터 정리하면 마음도 정리돼. 멋져!" : "Organizing a small space can organize your mind too. Awesome!" },
+            ]
+          },
+          avoid: {
+            emoji: "🎯",
+            title: t("resultAvoidTitle"),
+            description: t("resultAvoidDesc"),
+            actions: [
+              { text: t("surveyOpt4_8"), action: "call", message: currentLang === "ko" ? "가장 작은 소통부터 시작했어. 잘하고 있어!" : "You started with the smallest communication. You're doing great!" },
+              { text: t("surveyOpt4_3"), action: "title", message: currentLang === "ko" ? "완벽하게 적을 필요 없어. 제목만 적으면 돼. 멋져!" : "No need to write perfectly. Just write titles. Awesome!" },
+            ]
+          },
+          ok: {
+            emoji: "✨",
+            title: t("resultOkTitle"),
+            description: t("resultOkDesc"),
+            actions: [
+              { text: currentLang === "ko" ? "⏱️ 3분 타이머 시작" : "⏱️ Start 3-minute timer", action: "timer", message: currentLang === "ko" ? "지금 바로 3분만 해보자. 끝나면 그만해도 돼. 시작이 중요해!" : "Let's do just 3 minutes right now. You can stop when it's done. Starting is what matters!" },
+              { text: currentLang === "ko" ? "🎯 가장 작은 행동부터" : "🎯 Start with smallest action", action: "any", message: currentLang === "ko" ? "어떤 작은 행동이든 좋아. 시작만 하면 돼. 잘하고 있어!" : "Any small action is good. Just start. You're doing great!" },
+            ]
+          }
+        };
+      }
 
       const state = {
         currentScreen: "landing",
@@ -1039,25 +1444,31 @@
         },
       };
 
-      const ACTION_LABELS = {
-        water: "물 한 컵 마시기",
-        sit: "침대에서 일어나 앉기",
-        title: "할 일 목록 ‘제목만’ 적기",
-        delete: "안 해도 되는 것 1개 지우기",
-        shower: "세수/샤워 ‘시작’만",
-        desk: "책상 위 3개만 정리",
-        out: "현관 밖 30초 서기",
-        call: "메시지 1개만 보내기",
-      };
+      function getActionLabel(key) {
+        const map = {
+          water: t("actionWater"),
+          sit: t("actionSit"),
+          title: t("actionTitle"),
+          delete: t("actionDelete"),
+          shower: t("actionShower"),
+          desk: t("actionDesk"),
+          out: t("actionOut"),
+          call: t("actionCall"),
+        };
+        return map[key] || key;
+      }
 
-      const BLOCKER_LABELS = {
-        tired: "피곤함/수면부족",
-        anxious: "불안/걱정",
-        overwhelmed: "할 일 과다",
-        avoid: "회피/미루기",
-        empty: "무감각/공허",
-        pain: "몸통증/컨디션",
-      };
+      function getBlockerLabel(key) {
+        const map = {
+          tired: t("blockerTired"),
+          anxious: t("blockerAnxious"),
+          overwhelmed: t("blockerOverwhelmed"),
+          avoid: t("blockerAvoid"),
+          empty: t("blockerEmpty"),
+          pain: t("blockerPain"),
+        };
+        return map[key] || key;
+      }
 
       function showToast(msg) {
         const t = $("#toast");
@@ -1161,7 +1572,7 @@
       async function copyText(text) {
         try {
           await navigator.clipboard.writeText(text);
-          showToast("기록을 복사했어");
+          showToast(t("toastCopied"));
         } catch (e) {
           // fallback
           const ta = document.createElement("textarea");
@@ -1170,39 +1581,39 @@
           ta.select();
           document.execCommand("copy");
           ta.remove();
-          showToast("기록을 복사했어");
+          showToast(t("toastCopied"));
         }
       }
 
       function exportToday() {
         const day = todayKey();
         const arr = state.logsByDay[day] || [];
-        const action = state.action ? ACTION_LABELS[state.action] : "미선택";
+        const action = state.action ? getActionLabel(state.action) : t("exportNotSelected");
         const blockers =
           Array.from(state.blockers)
-            .map((k) => BLOCKER_LABELS[k])
-            .join(", ") || "미선택";
+            .map((k) => getBlockerLabel(k))
+            .join(", ") || t("exportNotSelected");
 
         const lines = [];
-        lines.push(`[딱정한 위로] ${day}`);
-        lines.push(`- 에너지: ${state.energy}/10`);
-        lines.push(`- 막힘: ${blockers}`);
-        lines.push(`- 오늘의 하나: ${action}`);
-        if (state.memo?.trim()) lines.push(`- 메모: ${state.memo.trim()}`);
-        lines.push(`- 로그(${arr.length}):`);
+        lines.push(`${t("exportHeader")} ${day}`);
+        lines.push(`- ${t("exportEnergy")}: ${state.energy}/10`);
+        lines.push(`- ${t("exportBlockers")}: ${blockers}`);
+        lines.push(`- ${t("exportAction")}: ${action}`);
+        if (state.memo?.trim()) lines.push(`- ${t("exportMemo")}: ${state.memo.trim()}`);
+        lines.push(`- ${t("exportLog")}(${arr.length}):`);
         for (const x of arr.slice().reverse()) {
-          const t = x.time || "";
+          const time = x.time || "";
           const tag =
             {
-              generate: "멘트",
-              timer_start: "타이머 시작",
-              timer_done: "타이머 완료",
-              done: "했다(체크)",
-              skip: "포기 선언",
-              memo: "메모 저장",
+              generate: t("logGenerate"),
+              timer_start: t("logTimerStart"),
+              timer_done: t("logTimerDone"),
+              done: t("logDone"),
+              skip: t("logSkip"),
+              memo: t("logMemo"),
             }[x.type] || x.type;
-          const act = x.action ? ACTION_LABELS[x.action] : "—";
-          lines.push(`  • ${t} / ${tag} / ${act}`);
+          const act = x.action ? getActionLabel(x.action) : "—";
+          lines.push(`  • ${time} / ${tag} / ${act}`);
         }
         return lines.join("\n");
       }
@@ -1225,7 +1636,7 @@
       function buildLines() {
         const e = state.energy;
         const mode = modeByEnergy(e);
-        const action = state.action ? ACTION_LABELS[state.action] : null;
+        const action = state.action ? getActionLabel(state.action) : null;
         const blockers = Array.from(state.blockers);
 
         // 1) validate (공감)
@@ -1332,7 +1743,7 @@
       }
 
       function applyLines(lines) {
-        $("#modePill").textContent = `모드: ${lines.mode}`;
+        $("#modePill").textContent = `${t("modeLabel")}: ${lines.mode}`;
         $("#mainLine").textContent = lines.main;
         $(
           "#subLine"
@@ -1344,7 +1755,7 @@
       // =========================
       function setTimerUI() {
         $("#time").textContent = fmtTime(state.timer.remaining);
-        $("#btnPause").textContent = state.timer.running ? "일시정지" : "재개";
+        $("#btnPause").textContent = state.timer.running ? t("btnPause") : t("btnResume");
       }
 
       function stopTimer(reset = true) {
@@ -1369,7 +1780,7 @@
               state.timer.running = false;
               clearInterval(state.timer.interval);
               state.timer.interval = null;
-              showToast("3분 끝. 여기서 멈춰도 돼.");
+              showToast(t("toastTimerEnd"));
               logEntry("timer_done");
             } else {
               setTimerUI();
@@ -1382,7 +1793,7 @@
       function togglePause() {
         state.timer.running = !state.timer.running;
         setTimerUI();
-        showToast(state.timer.running ? "재개" : "일시정지");
+        showToast(state.timer.running ? t("btnResume") : t("btnPause"));
       }
 
       // =========================
@@ -1393,14 +1804,14 @@
         const y = d.getFullYear();
         const m = d.getMonth() + 1;
         const day = d.getDate();
-        $("#todayPill").textContent = `오늘: ${y}.${String(m).padStart(
+        $("#todayPill").textContent = `${t("todayLabel")}: ${y}.${String(m).padStart(
           2,
           "0"
         )}.${String(day).padStart(2, "0")}`;
       }
 
       function renderStreak() {
-        $("#streakPill").textContent = `연속: ${state.streak}일`;
+        $("#streakPill").textContent = `${t("streakLabel")}: ${state.streak}${t("streakDays")}`;
       }
 
       function renderLog() {
@@ -1412,8 +1823,7 @@
         if (arr.length === 0) {
           const empty = document.createElement("div");
           empty.className = "hint";
-          empty.innerHTML =
-            "아직 기록이 없어. 괜찮아.<br/>버튼 하나만 눌러도 ‘시작’이야.";
+          empty.innerHTML = t("logEmpty");
           box.appendChild(empty);
           return;
         }
@@ -1423,25 +1833,25 @@
           el.className = "item";
           const tag =
             {
-              generate: "멘트",
-              timer_start: "타이머 시작",
-              timer_done: "타이머 완료",
-              done: "했다(체크)",
-              skip: "포기 선언",
-              memo: "메모 저장",
+              generate: t("logGenerate"),
+              timer_start: t("logTimerStart"),
+              timer_done: t("logTimerDone"),
+              done: t("logDone"),
+              skip: t("logSkip"),
+              memo: t("logMemo"),
             }[x.type] || x.type;
 
-          const act = x.action ? ACTION_LABELS[x.action] : "—";
+          const act = x.action ? getActionLabel(x.action) : "—";
           const blockers =
-            (x.blockers || []).map((k) => BLOCKER_LABELS[k]).join(", ") || "—";
+            (x.blockers || []).map((k) => getBlockerLabel(k)).join(", ") || "—";
 
           el.innerHTML = `
           <div class="t">
             <span>${x.time} · ${tag}</span>
             <span class="mono">E:${x.energy}/10</span>
           </div>
-          <div class="d">행동: ${act} · 막힘: ${blockers}${
-            x.memo ? " · 메모: " + escapeHtml(x.memo) : ""
+          <div class="d">${t("logAction")}: ${act} · ${t("logBlockers")}: ${blockers}${
+            x.memo ? " · " + t("logMemoLabel") + ": " + escapeHtml(x.memo) : ""
           }</div>
         `;
           box.appendChild(el);
@@ -1523,7 +1933,7 @@
         $("#mainLine").textContent = s;
         $("#subLine").textContent =
           "지금 당장 3분만. 멈춰도 돼. 중요한 건 ‘시작’ 기록.";
-        showToast("다음 한 문장");
+        showToast(t("toastNudge"));
         logEntry("generate");
       }
 
@@ -1547,10 +1957,11 @@
       }
 
       function renderQuestion() {
-        const q = SURVEY_QUESTIONS[state.currentQuestionIndex];
-        const progress = ((state.currentQuestionIndex + 1) / SURVEY_QUESTIONS.length) * 100;
+        const questions = getSurveyQuestions();
+        const q = questions[state.currentQuestionIndex];
+        const progress = ((state.currentQuestionIndex + 1) / questions.length) * 100;
         
-        $("#questionNumber").textContent = `질문 ${state.currentQuestionIndex + 1}/${SURVEY_QUESTIONS.length}`;
+        $("#questionNumber").textContent = `${t("questionPrefix")} ${state.currentQuestionIndex + 1}/${questions.length}`;
         $("#questionPercent").textContent = `${Math.round(progress)}%`;
         $("#progressFill").style.width = `${progress}%`;
         $("#questionTitle").textContent = q.question;
@@ -1586,7 +1997,8 @@
       }
 
       function nextQuestion() {
-        if (state.currentQuestionIndex < SURVEY_QUESTIONS.length - 1) {
+        const questions = getSurveyQuestions();
+        if (state.currentQuestionIndex < questions.length - 1) {
           state.currentQuestionIndex++;
           renderQuestion();
         } else {
@@ -1650,7 +2062,8 @@
           else if (firstAnswer.value === "avoid") resultType = "avoid";
         }
         
-        const result = RESULT_TYPES[resultType] || RESULT_TYPES.ok;
+        const resultTypes = getResultTypes();
+        const result = resultTypes[resultType] || resultTypes.ok;
         
         $("#resultEmoji").textContent = result.emoji;
         $("#resultTitle").textContent = result.title;
@@ -1670,7 +2083,7 @@
                 if (state.action) {
                   $("#btnStart3").click();
                 } else {
-                  showToast("먼저 행동을 선택해주세요");
+                  showToast(t("toastSelectActionForTimer"));
                 }
               }, 300);
             } else if (act.action === "any") {
@@ -1690,7 +2103,7 @@
         // 메인 화면으로 가기 버튼 추가
         const mainBtn = document.createElement("div");
         mainBtn.className = "result-action";
-        mainBtn.textContent = "📋 전체 기능 보기";
+        mainBtn.textContent = t("resultViewAll");
         mainBtn.addEventListener("click", showMainScreen);
         actionsContainer.appendChild(mainBtn);
         
@@ -1699,7 +2112,7 @@
         
         // 결과 화면에 도달한 것을 축하
         setTimeout(() => {
-          showToast("설문 완료! 잘했어! 🎉");
+          showToast(t("resultComplete"));
         }, 500);
       }
 
@@ -1715,6 +2128,10 @@
       // Events
       // =========================
       function init() {
+        // Initialize language
+        currentLang = detectLang();
+        applyTranslations();
+        
         load();
         
         // 시작 화면 버튼
@@ -1775,7 +2192,7 @@
             e.preventDefault();
             state.memo = $("#memo").value;
             logEntry("memo");
-            showToast("메모 저장");
+            showToast(t("toastMemoSaved"));
           }
         });
 
@@ -1794,13 +2211,13 @@
           const lines = buildLines();
           applyLines(lines);
           logEntry("generate");
-          showToast("멘트 생성");
+          showToast(t("toastMentionGenerated"));
         });
 
         // Timer
         $("#btnStart3").addEventListener("click", () => {
           if (!state.action) {
-            showToast("먼저 ‘딱 하나’를 고르자");
+            showToast(t("toastSelectAction"));
             return;
           }
           // reset and start
@@ -1809,30 +2226,30 @@
           setTimerUI();
           startTimer();
           logEntry("timer_start");
-          showToast("3분 시작");
+          showToast(t("toastTimerStart"));
         });
         $("#btnPause").addEventListener("click", () => {
           if (!state.timer.interval) {
             // if never started, do nothing
-            showToast("먼저 타이머를 시작해");
+            showToast(t("toastStartTimer"));
             return;
           }
           togglePause();
         });
         $("#btnStop").addEventListener("click", () => {
           stopTimer(true);
-          showToast("타이머 종료");
+          showToast(t("toastTimerStop"));
         });
 
         // Done / Skip
         $("#btnDone").addEventListener("click", () => {
           if (!state.action) {
-            showToast("먼저 ‘딱 하나’를 고르자");
+            showToast(t("toastSelectAction"));
             return;
           }
           stopTimer(true);
           logEntry("done");
-          showToast("좋아. 오늘은 여기까지로 충분해.");
+          showToast(t("toastDone"));
         });
 
         $("#btnSkip").addEventListener("click", () => {
@@ -1842,7 +2259,7 @@
           $("#mainLine").textContent = "오늘은 포기 선언, 오케이.";
           $("#subLine").textContent =
             "대신 약속 하나: 내일은 ‘딱 하나’만 고르자. (크게 말고, 작게)";
-          showToast("포기 선언 기록");
+          showToast(t("toastSkip"));
         });
 
         // Export / reset / clear
@@ -1856,7 +2273,7 @@
           state.logsByDay[day] = [];
           save();
           renderLog();
-          showToast("오늘 기록 삭제");
+          showToast(t("toastLogCleared"));
         });
 
         $("#btnReset").addEventListener("click", () => {
@@ -1878,20 +2295,19 @@
           $("#energy").value = "3";
           $("#energyVal").textContent = "3";
           $("#memo").value = "";
-          $("#modePill").textContent = "모드: 자동";
-          $("#mainLine").textContent = "오늘 의욕이 없지? 이상한 게 아니야.";
-          $("#subLine").textContent =
-            "다만, 지금 “아무것도 안 하면” 이 상태는 좋아지지 않아.";
+          $("#modePill").textContent = `${t("modeLabel")}: ${t("modeAuto")}`;
+          $("#mainLine").textContent = currentLang === "ko" ? "오늘 의욕이 없지? 이상한 게 아니야." : "No motivation today? That's not strange.";
+          $("#subLine").textContent = currentLang === "ko" ? "다만, 지금 \"아무것도 안 하면\" 이 상태는 좋아지지 않아." : "However, if you do nothing now, this state won't improve.";
           renderStreak();
           renderLog();
-          showToast("초기화 완료");
+          showToast(t("toastReset"));
         });
 
         $("#btnNudge").addEventListener("click", nextNudge);
 
         // 설문 다시하기
         $("#btnRestartSurvey").addEventListener("click", () => {
-          if (confirm("설문을 다시 시작할까요? 현재 진행 상황은 저장됩니다.")) {
+          if (confirm(t("toastConfirmRestart"))) {
             startSurvey();
           }
         });
